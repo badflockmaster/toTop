@@ -12,6 +12,8 @@ window.onload=function(){
         {
             clearInterval(timer);
         }
+        // 当用户在回到顶部的过程中，滚动了鼠标的滚轮。就讲flag设置为false；下次滚动条
+        // 移动的时候，就会触发onscroll事件，来关闭定时器。
         flag = false;
     };
     //先初始化界面，让界面height变大
@@ -27,15 +29,16 @@ window.onload=function(){
     top.onclick=function()
     {
         timer = setInterval(function () {
+            //获取滚动条距离顶部的距离
             var otop = document.documentElement.scrollTop||document.body.scrollTop;
             var speed = Math.ceil(otop/6);
             document.documentElement.scrollTop = document.body.scrollTop -= speed;
+            //每滚动一次，设置一下flag。使得无法通过onscroll事件来关闭定时器。
             flag = true;
             if(otop == 0)
             {
                 clearInterval(timer);
             }
         }, 30);
-        //获取滚动条距离顶部的距离
     };
 };
