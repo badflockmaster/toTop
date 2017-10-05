@@ -35,7 +35,7 @@ window.onload=function(){
             document.documentElement.scrollTop = document.body.scrollTop -= speed;
             //每滚动一次，设置一下flag。使得无法通过onscroll事件来关闭定时器。
             flag = true;
-            if(otop == 0)
+            if(otop === 0)
             {
                 clearInterval(timer);
             }
